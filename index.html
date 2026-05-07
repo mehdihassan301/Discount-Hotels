@@ -52,13 +52,14 @@
 
         .glow-sphere {
             position: absolute;
-            width: 40vw;
-            height: 40vw;
+            width: 80vw;
+            height: 80vw;
             background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, rgba(0,0,0,0) 70%);
             filter: blur(60px);
             z-index: 0;
             pointer-events: none;
         }
+        @media (min-width: 1024px) { .glow-sphere { width: 40vw; height: 40vw; } }
 
         .reveal {
             opacity: 0;
@@ -86,7 +87,6 @@
             transition: opacity 0.3s ease;
         }
 
-        /* Reflection Sweep Effect */
         .sweep-container { position: relative; overflow: hidden; }
         .sweep-container::after {
             content: '';
@@ -103,7 +103,6 @@
             opacity: 1;
         }
 
-        /* Floating Animation */
         @keyframes floating {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -116,238 +115,169 @@
 
     <div id="cursor-glow" class="hidden lg:block"></div>
 
-    <!-- [NAVBAR UNCHANGED] -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-6 py-8">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-8 py-4">
-            <a href="#" class="text-2xl font-bold tracking-tighter flex items-center gap-2">
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-4 md:px-6 py-4 md:py-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-5 md:px-8 py-3 md:py-4">
+            <a href="#" class="text-xl md:text-2xl font-bold tracking-tighter flex items-center gap-2">
                 <span class="w-8 h-8 bg-gold rounded-full flex items-center justify-center text-white text-xs">DH</span>
-                <span class="uppercase tracking-widest text-lg font-serif italic">Discount<span class="font-sans font-extrabold not-italic">Hotels</span></span>
+                <span class="uppercase tracking-widest text-base md:text-lg font-serif italic">Discount<span class="font-sans font-extrabold not-italic">Hotels</span></span>
             </a>
-            <div class="hidden lg:flex items-center space-x-10 text-[11px] uppercase tracking-[0.2em] font-semibold">
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-10 text-[13px] uppercase tracking-[0.25em] font-bold">
                 <a href="#" class="hover:text-gold transition-colors">Portfolio</a>
                 <a href="#" class="hover:text-gold transition-colors">Corporate</a>
                 <a href="#" class="hover:text-gold transition-colors">Services</a>
                 <a href="#" class="hover:text-gold transition-colors">Contact</a>
             </div>
-            <div class="flex items-center gap-4">
-                <button id="theme-toggle" class="p-2 glass rounded-full hover:bg-gold/10 transition-colors">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+
+            <div class="flex items-center gap-2 md:gap-4">
+                <button id="theme-toggle" class="p-2 md:p-2.5 glass rounded-full hover:bg-gold/10 transition-colors">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                 </button>
-                <a href="https://wa.me/yournumber" class="bg-gold hover:bg-gold-dark text-white text-[10px] uppercase tracking-widest px-6 py-3 rounded-full transition-all transform hover:-translate-y-1 shadow-lg">
-                    Book Excellence
+                <a href="https://wa.me/yournumber" class="bg-gold hover:bg-gold-dark text-white text-[12px] md:text-[13px] uppercase tracking-widest font-bold px-4 md:px-6 py-2.5 md:py-3 rounded-full transition-all shadow-lg whitespace-nowrap">
+                    Book <span class="hidden sm:inline">Excellence</span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- [HERO UNCHANGED] -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <!-- HERO -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-black/40 z-10"></div>
             <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover scale-110" id="hero-img" alt="Luxury Hotel">
         </div>
         <div class="relative z-20 text-center max-w-5xl px-6">
-            <span class="inline-block glass px-4 py-2 rounded-full text-[10px] uppercase tracking-[0.3em] text-white mb-8 reveal">Est. Excellence in Hospitality</span>
-            <h1 class="text-5xl md:text-8xl font-serif text-white mb-8 leading-[1.1] reveal stagger-1">
-                Premium Accommodation <br/> <span class="italic text-gold">& Travel Solutions</span>
+            <span class="inline-block glass px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[12px] md:text-[14px] uppercase tracking-[0.3em] font-bold text-white mb-6 md:mb-8 reveal">Est. Excellence in Hospitality</span>
+            <h1 class="text-4xl md:text-7xl lg:text-8xl font-serif text-white mb-6 md:mb-8 leading-[1.2] md:leading-[1.1] reveal stagger-1">
+                Premium Accommodation <br class="hidden md:block"/> <span class="italic text-gold">& Travel Solutions</span>
             </h1>
-            <p class="text-white/70 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto leading-relaxed reveal stagger-2">
+            <p class="text-white/80 text-lg md:text-2xl font-light mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed reveal stagger-2">
                 Hotels, serviced apartments, and corporate travel arrangements — professionally managed for the discerning business client.
             </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 reveal stagger-3">
-                <button class="w-full sm:w-auto px-12 py-5 bg-white text-charcoal font-bold text-xs uppercase tracking-widest hover:bg-gold hover:text-white transition-all duration-500 rounded-lg">Book Your Stay</button>
-                <button class="w-full sm:w-auto px-12 py-5 glass text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all duration-500 rounded-lg flex items-center justify-center gap-2">WhatsApp</button>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 reveal stagger-3">
+                <button class="w-full sm:w-auto px-8 md:px-12 py-4 md:py-5 bg-white text-charcoal font-bold text-[13px] md:text-[14px] uppercase tracking-widest hover:bg-gold hover:text-white transition-all duration-500 rounded-lg">Book Your Stay</button>
+                <button class="w-full sm:w-auto px-8 md:px-12 py-4 md:py-5 glass text-white font-bold text-[13px] md:text-[14px] uppercase tracking-widest hover:bg-white/10 transition-all duration-500 rounded-lg flex items-center justify-center gap-2">WhatsApp</button>
             </div>
         </div>
     </section>
 
-    <!-- 1. IMPROVED SERVICES GRID SECTION -->
-    <section class="py-32 px-6 relative bg-[#fcfcfc] dark:bg-[#0d0d0d] overflow-hidden">
+    <!-- SERVICES GRID -->
+    <section class="py-20 md:py-32 px-6 relative bg-[#fcfcfc] dark:bg-[#0d0d0d] overflow-hidden">
         <div class="glow-sphere top-0 left-0"></div>
         <div class="max-w-7xl mx-auto">
-            <div class="mb-20 text-center reveal">
-                <h4 class="text-gold font-bold text-xs uppercase tracking-widest mb-4">Our Core Services</h4>
-                <h2 class="text-4xl md:text-6xl font-serif leading-tight mb-6">World-Class <span class="italic">Management</span></h2>
-                <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-light">Tailored hospitality and travel solutions designed for executives, corporate teams, families, and modern travelers.</p>
+            <div class="mb-12 md:mb-20 text-center reveal">
+                <h4 class="text-gold font-bold text-[14px] md:text-[16px] uppercase tracking-[0.3em] mb-4">Our Core Services</h4>
+                <h2 class="text-3xl md:text-6xl font-serif leading-tight mb-6">World-Class <span class="italic">Management</span></h2>
+                <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-light text-lg md:text-xl">Tailored hospitality and travel solutions designed for executives, corporate teams, and modern travelers.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service Card Template (Repeated 8 times with variations) -->
-                <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal rounded-3xl hover:-translate-y-3 hover:border-gold/40 hover:shadow-2xl hover:shadow-gold/10">
+            <!-- MAINTAINED 4-COLUMN GRID WITH RESPONSIVE BREAKS -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <!-- Card 1 -->
+                <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal rounded-3xl hover:-translate-y-3 hover:border-gold/40 shadow-xl">
                     <div class="w-14 h-14 rounded-2xl bg-gold/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 animate-float">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-width="1.5"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Luxury Hotels</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed">Handpicked high-end suites in Pakistan's most prestigious locations.</p>
-                </div>
-
-                <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal stagger-1 rounded-3xl hover:-translate-y-3 hover:border-gold/40 hover:shadow-gold/10">
-                    <div class="w-14 h-14 rounded-2xl bg-gold/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all animate-float">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-width="1.5"/></svg>
-                    </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Guest Houses</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed">Elegant, private, and professionally managed residences for quiet stays.</p>
-                </div>
-
-                <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal stagger-2 rounded-3xl hover:-translate-y-3 hover:border-gold/40 hover:shadow-gold/10">
-                    <div class="w-14 h-14 rounded-2xl bg-gold/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all animate-float">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" stroke-width="1.5"/></svg>
-                    </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Service Apartments</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed">Fully furnished luxury flats with the amenities of a five-star hotel.</p>
-                </div>
-
-                <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal stagger-3 rounded-3xl hover:-translate-y-3 hover:border-gold/40 hover:shadow-gold/10">
-                    <div class="w-14 h-14 rounded-2xl bg-gold/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all animate-float">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-width="1.5"/></svg>
-                    </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Executive Fleet</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed">Punctual transport with chauffeurs for seamless inter-city transit.</p>
-                </div>
-
-                <!-- Second Row -->
-                <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal rounded-3xl hover:-translate-y-3 hover:border-gold/40">
-                    <div class="w-14 h-14 rounded-2xl bg-gold/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all animate-float">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-width="1.5"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="1.5"/></svg>
-                    </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">City Tours</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed">Curated luxury visits to iconic landmarks for international guests.</p>
+                    <h3 class="text-xl font-bold mb-3 tracking-tight">Luxury Hotels</h3>
+                    <p class="text-[15px] text-gray-500 dark:text-gray-400 font-light leading-relaxed">Handpicked high-end suites in Pakistan's most prestigious locations.</p>
                 </div>
 
                 <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal stagger-1 rounded-3xl hover:-translate-y-3 hover:border-gold/40">
                     <div class="w-14 h-14 rounded-2xl bg-gold/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all animate-float">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-width="1.5"/></svg>
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-width="1.5"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Family Groups</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed">Customized arrangements ensuring comfort for the entire family.</p>
+                    <h3 class="text-xl font-bold mb-3 tracking-tight">Guest Houses</h3>
+                    <p class="text-[15px] text-gray-500 dark:text-gray-400 font-light leading-relaxed">Elegant, private, and professionally managed residences.</p>
                 </div>
 
                 <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal stagger-2 rounded-3xl hover:-translate-y-3 hover:border-gold/40">
                     <div class="w-14 h-14 rounded-2xl bg-gold/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all animate-float">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-width="1.5"/></svg>
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" stroke-width="1.5"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Luxury Breakfast</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed">Five-star continental dining experiences to start your day.</p>
+                    <h3 class="text-xl font-bold mb-3 tracking-tight">Service Apartments</h3>
+                    <p class="text-[15px] text-gray-500 dark:text-gray-400 font-light leading-relaxed">Fully furnished luxury flats with five-star hotel amenities.</p>
                 </div>
 
                 <div class="group p-8 glass sweep-container hover:bg-white dark:hover:bg-charcoal transition-all duration-700 reveal stagger-3 rounded-3xl hover:-translate-y-3 hover:border-gold/40">
                     <div class="w-14 h-14 rounded-2xl bg-gold/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all animate-float">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-width="1.5"/></svg>
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-width="1.5"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Corporate Desk</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed">Specialized logistics for delegations and multinational corporations.</p>
+                    <h3 class="text-xl font-bold mb-3 tracking-tight">Executive Fleet</h3>
+                    <p class="text-[15px] text-gray-500 dark:text-gray-400 font-light leading-relaxed">Punctual transport with professional chauffeurs for transit.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. IMPROVED STATS & IMAGE SECTION -->
-    <section class="bg-charcoal py-32 relative overflow-hidden text-white">
+    <!-- STATS & IMAGE -->
+    <section class="bg-charcoal py-20 md:py-32 relative overflow-hidden text-white">
         <div class="glow-sphere bottom-0 right-0 opacity-20"></div>
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div class="reveal">
-                <h4 class="text-gold font-bold text-xs uppercase tracking-widest mb-6">Trusted by Professionals</h4>
-                <h2 class="text-4xl md:text-6xl font-serif mb-8 italic">Corporate Travel, Reimagined.</h2>
-                <p class="text-gray-400 font-light text-lg mb-12 leading-relaxed">
-                    Discount Hotels delivers professionally managed accommodation and transport solutions for executives, business teams, families, and international visitors across Pakistan.
+                <h4 class="text-gold font-bold text-[14px] md:text-[16px] uppercase tracking-[0.3em] mb-6">Trusted by Professionals</h4>
+                <h2 class="text-3xl md:text-6xl font-serif mb-8 italic">Corporate Travel, Reimagined.</h2>
+                <p class="text-gray-400 font-light text-lg md:text-xl mb-10 leading-relaxed">
+                    Discount Hotels delivers professionally managed solutions for executives and international visitors across Pakistan.
                 </p>
-                <div class="grid grid-cols-2 gap-y-12 gap-x-10">
+                <div class="grid grid-cols-2 gap-y-10 md:gap-y-12 gap-x-6 md:gap-x-10">
                     <div class="group">
-                        <span class="text-4xl font-bold text-white block mb-2 font-serif group-hover:text-gold transition-colors duration-500">500+</span>
-                        <span class="text-[10px] uppercase tracking-widest text-gray-500">Corporate Partners</span>
+                        <span class="text-4xl md:text-5xl font-bold text-white block mb-2 font-serif group-hover:text-gold transition-colors duration-500">500+</span>
+                        <span class="text-[13px] md:text-[14px] uppercase tracking-widest font-bold text-gray-500">Corporate Partners</span>
                     </div>
                     <div class="group">
-                        <span class="text-4xl font-bold text-white block mb-2 font-serif group-hover:text-gold transition-colors duration-500">15k+</span>
-                        <span class="text-[10px] uppercase tracking-widest text-gray-500">Stay Arrangements</span>
-                    </div>
-                    <div class="group">
-                        <span class="text-2xl font-bold text-white block mb-2 font-serif">24/7</span>
-                        <span class="text-[10px] uppercase tracking-widest text-gray-500">Booking Assistance</span>
-                    </div>
-                    <div class="group">
-                        <span class="text-2xl font-bold text-white block mb-2 font-serif italic">Elite</span>
-                        <span class="text-[10px] uppercase tracking-widest text-gray-500">Executive Coordination</span>
+                        <span class="text-4xl md:text-5xl font-bold text-white block mb-2 font-serif group-hover:text-gold transition-colors duration-500">15k+</span>
+                        <span class="text-[13px] md:text-[14px] uppercase tracking-widest font-bold text-gray-500">Stay Arrangements</span>
                     </div>
                 </div>
             </div>
             
-            <div class="relative reveal stagger-1 group">
-                <div class="absolute -inset-4 glass border-white/5 rounded-[40px] rotate-3 z-0 group-hover:rotate-0 transition-transform duration-700"></div>
-                <div class="relative z-10 overflow-hidden rounded-[32px] aspect-[4/5] sweep-container">
-                    <!-- Glass Info Badges -->
-                    <div class="absolute top-8 right-8 z-20 glass px-6 py-4 rounded-2xl animate-float">
-                        <p class="text-gold font-bold text-xs">Vetted Luxury</p>
+            <div class="relative reveal stagger-1 group mt-10 lg:mt-0">
+                <div class="absolute -inset-4 glass border-white/5 rounded-[40px] rotate-3 z-0"></div>
+                <div class="relative z-10 overflow-hidden rounded-[32px] aspect-[4/5] md:aspect-video lg:aspect-[4/5] sweep-container shadow-2xl">
+                    <div class="absolute top-6 md:top-8 right-6 md:right-8 z-20 glass px-5 md:px-6 py-3 md:py-4 rounded-2xl animate-float">
+                        <p class="text-gold font-bold text-xs md:text-sm tracking-widest uppercase">Vetted Luxury</p>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-125" alt="Corporate Boardroom">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-12">
-                        <div>
-                            <p class="text-xs uppercase tracking-[0.5em] text-gold font-bold mb-2">The Executive Choice</p>
-                            <p class="text-white/60 text-sm font-light">Seamless logistics for the modern professional.</p>
-                        </div>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Corporate Boardroom">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. NEW FEATURED ACCOMMODATIONS SECTION -->
-    <section class="py-32 px-6 relative bg-white dark:bg-[#080808]">
+    <!-- FEATURED ACCOMMODATIONS -->
+    <section class="py-20 md:py-32 px-6 relative bg-white dark:bg-[#080808]">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-20 text-center reveal">
-                <h4 class="text-gold font-bold text-xs uppercase tracking-widest mb-4">Featured Stays</h4>
-                <h2 class="text-4xl md:text-6xl font-serif mb-6">Signature <span class="italic text-gold">Living</span></h2>
-                <p class="text-gray-500 max-w-2xl mx-auto font-light">Professionally selected accommodations tailored for comfort, business travel, and premium hospitality experiences.</p>
+            <div class="mb-12 md:mb-20 text-center reveal">
+                <h4 class="text-gold font-bold text-[14px] md:text-[16px] uppercase tracking-[0.3em] mb-4">Featured Stays</h4>
+                <h2 class="text-3xl md:text-7xl font-serif mb-6 leading-tight">Signature <span class="italic text-gold">Living</span></h2>
+                <p class="text-gray-500 max-w-2xl mx-auto font-light text-lg md:text-xl leading-relaxed">Professionally selected accommodations tailored for comfort and business travel.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- MAINTAINED 2-COLUMN GRID WITH MOBILE STACKING -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <!-- Card 1 -->
-                <div class="group relative overflow-hidden rounded-[2rem] h-[500px] reveal">
+                <div class="group relative overflow-hidden rounded-[2.5rem] md:rounded-[3rem] h-[450px] md:h-[550px] reveal">
                     <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110" alt="Luxury Hotel">
                     <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute inset-0 p-12 flex flex-col justify-end transform transition-transform duration-700 group-hover:-translate-y-4">
-                        <div class="glass p-8 rounded-2xl border-white/10 hover:border-gold/50 transition-colors">
-                            <h3 class="text-2xl font-serif text-white mb-2">Luxury Hotels</h3>
-                            <p class="text-white/70 text-sm font-light mb-6">Five-star suites with exclusive concierge services.</p>
-                            <button class="text-[10px] uppercase tracking-widest text-gold font-bold border-b border-gold/40 pb-2 hover:text-white hover:border-white transition-all">Discover Stays &rarr;</button>
+                    <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+                        <div class="glass p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem]">
+                            <h3 class="text-2xl md:text-3xl font-serif text-white mb-3">Luxury Hotels</h3>
+                            <p class="text-white/70 text-base md:text-lg font-light mb-6 md:mb-8">Five-star suites with exclusive concierge services.</p>
+                            <button class="text-[13px] md:text-[14px] uppercase tracking-[0.25em] text-gold font-bold border-b-2 border-gold/40 pb-2 hover:text-white hover:border-white transition-all">Discover &rarr;</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="group relative overflow-hidden rounded-[2rem] h-[500px] reveal stagger-1">
+                <div class="group relative overflow-hidden rounded-[2.5rem] md:rounded-[3rem] h-[450px] md:h-[550px] reveal stagger-1">
                     <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110" alt="Executive Apartments">
                     <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute inset-0 p-12 flex flex-col justify-end transform transition-transform duration-700 group-hover:-translate-y-4">
-                        <div class="glass p-8 rounded-2xl border-white/10 hover:border-gold/50 transition-colors">
-                            <h3 class="text-2xl font-serif text-white mb-2">Executive Apartments</h3>
-                            <p class="text-white/70 text-sm font-light mb-6">Fully equipped workspaces and high-speed living.</p>
-                            <button class="text-[10px] uppercase tracking-widest text-gold font-bold border-b border-gold/40 pb-2 hover:text-white hover:border-white transition-all">View Facilities &rarr;</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="group relative overflow-hidden rounded-[2rem] h-[500px] reveal">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110" alt="Family Guest Houses">
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute inset-0 p-12 flex flex-col justify-end transform transition-transform duration-700 group-hover:-translate-y-4">
-                        <div class="glass p-8 rounded-2xl border-white/10 hover:border-gold/50 transition-colors">
-                            <h3 class="text-2xl font-serif text-white mb-2">Family Guest Houses</h3>
-                            <p class="text-white/70 text-sm font-light mb-6">Spacious retreats for memorable family journeys.</p>
-                            <button class="text-[10px] uppercase tracking-widest text-gold font-bold border-b border-gold/40 pb-2 hover:text-white hover:border-white transition-all">Check Availability &rarr;</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="group relative overflow-hidden rounded-[2rem] h-[500px] reveal stagger-1">
-                    <img src="https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110" alt="Corporate Stay Options">
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute inset-0 p-12 flex flex-col justify-end transform transition-transform duration-700 group-hover:-translate-y-4">
-                        <div class="glass p-8 rounded-2xl border-white/10 hover:border-gold/50 transition-colors">
-                            <h3 class="text-2xl font-serif text-white mb-2">Corporate Stay Options</h3>
-                            <p class="text-white/70 text-sm font-light mb-6">Strategic locations near business hubs.</p>
-                            <button class="text-[10px] uppercase tracking-widest text-gold font-bold border-b border-gold/40 pb-2 hover:text-white hover:border-white transition-all">Business Inquiry &rarr;</button>
+                    <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+                        <div class="glass p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem]">
+                            <h3 class="text-2xl md:text-3xl font-serif text-white mb-3">Executive Apartments</h3>
+                            <p class="text-white/70 text-base md:text-lg font-light mb-6 md:mb-8">Fully equipped workspaces and high-end living.</p>
+                            <button class="text-[13px] md:text-[14px] uppercase tracking-[0.25em] text-gold font-bold border-b-2 border-gold/40 pb-2 hover:text-white hover:border-white transition-all">Discover &rarr;</button>
                         </div>
                     </div>
                 </div>
@@ -355,60 +285,61 @@
         </div>
     </section>
 
-    <!-- [FOOTER UNCHANGED] -->
-    <footer class="bg-[#080808] text-white pt-32 pb-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6 text-center md:text-left">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
-                <div class="col-span-2">
-                    <h2 class="text-3xl font-serif italic mb-8">Discount<span class="not-italic font-sans font-extrabold uppercase tracking-widest text-gold text-lg ml-2">Hotels</span></h2>
-                    <p class="text-gray-500 max-w-sm font-light leading-relaxed">Pakistan's premier hospitality management group. Delivering seamless travel logistics and luxury accommodations for business and leisure.</p>
+    <!-- FOOTER -->
+    <footer class="bg-[#080808] text-white pt-20 md:pt-32 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-16 md:mb-24">
+                <div class="sm:col-span-2">
+                    <h2 class="text-2xl md:text-3xl font-serif italic mb-6 md:mb-8">Discount<span class="not-italic font-sans font-extrabold uppercase tracking-widest text-gold text-lg ml-2">Hotels</span></h2>
+                    <p class="text-gray-500 max-w-sm font-light text-base md:text-lg leading-relaxed">Pakistan's premier hospitality management group. Delivering seamless travel logistics and luxury accommodations.</p>
                 </div>
                 <div>
-                    <h4 class="text-[10px] uppercase tracking-widest font-bold text-white mb-8">Quick Navigation</h4>
-                    <ul class="space-y-4 text-gray-500 text-sm font-light">
-                        <li><a href="#" class="hover:text-gold">Properties</a></li>
-                        <li><a href="#" class="hover:text-gold">Fleet Management</a></li>
+                    <h4 class="text-[13px] md:text-[14px] uppercase tracking-[0.25em] font-bold text-white mb-6 md:mb-8">Quick Navigation</h4>
+                    <ul class="space-y-4 text-gray-500 text-[15px] font-light">
+                        <li><a href="#" class="hover:text-gold transition-colors">Properties</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Fleet Management</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-[10px] uppercase tracking-widest font-bold text-white mb-8">Contact Desk</h4>
-                    <ul class="space-y-4 text-gray-500 text-sm font-light">
-                        <li>bookings@discounthotels.pk</li>
-                    </ul>
+                    <h4 class="text-[13px] md:text-[14px] uppercase tracking-[0.25em] font-bold text-white mb-6 md:mb-8">Contact Desk</h4>
+                    <p class="text-gray-500 text-[15px] font-light">bookings@discounthotels.pk</p>
                 </div>
             </div>
-            <p class="text-[10px] uppercase tracking-widest text-gray-600 border-t border-white/5 pt-12">© 2026 Discount Hotels. All Rights Reserved.</p>
+            <p class="text-[12px] md:text-[13px] uppercase tracking-[0.3em] font-bold text-gray-600 border-t border-white/5 pt-10 md:pt-12 text-center md:text-left">© 2026 Discount Hotels. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Existing Scripts
-        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
+        document.getElementById('theme-toggle').addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
         });
 
-        // Cursor Glow
         const cursor = document.getElementById('cursor-glow');
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Parallax
         window.addEventListener('scroll', () => {
             const img = document.getElementById('hero-img');
+            const nav = document.getElementById('navbar');
             const scroll = window.pageYOffset;
             if(img) img.style.transform = `scale(1.1) translateY(${scroll * 0.3}px)`;
+            
+            if (scroll > 50) {
+                nav.classList.add('py-2', 'md:py-4');
+                nav.classList.remove('py-4', 'md:py-8');
+            } else {
+                nav.classList.add('py-4', 'md:py-8');
+                nav.classList.remove('py-2', 'md:py-4');
+            }
         });
     </script>
 </body>
